@@ -27,11 +27,13 @@
         }
     },
     "font": {
-        "point": 70,
+        "point": 50,
         "ttf_file": "fonts/MonospaceTypewriter.ttf",
-        "color": "black"
+        "color": "black",
+        "y_offset_pct": 0.1
     },
     "background": {
         "color": "white"
-    }
+    },
+    "image": "test_data/DSC_2235.jpg"
 }

@@ -16,7 +16,7 @@ class Handler:
 
     def get_metadata(self):
         """
-        Get the metadata data from our config
+        Get the metadata data from the config
 
         Returns:
             Dictionary object
@@ -24,7 +24,7 @@ class Handler:
         return self.__data["metadata"]
     def get_font(self):
         """
-        Get the font data from our config
+        Get the font data from the config
 
         Returns:
             Dictionary object
@@ -32,12 +32,20 @@ class Handler:
         return self.__data["font"]
     def get_background(self):
         """
-        Get the background data from our config
+        Get the background data from the config
 
         Returns:
             Dictionary object
         """
         return self.__data["background"]
+    def get_image(self):
+        """
+        Get the image filename from the config
+
+        Returns:
+            image filename
+        """
+        return self.__data["image"]
 
 def create_handler(filename):
     """
@@ -49,10 +57,8 @@ def create_handler(filename):
     Returns:
         A config.Handler object
     """
-    # TODO maybe change to raise an exception instead of exiting program
     if not (path.exists(filename) and path.isfile(filename)):
-        print("could not find the given info file")
-        exit()
+        raise Exception("file does not exist or is not a file")
     with open(filename) as f:
         data = json.load(f)
     return Handler(data)
