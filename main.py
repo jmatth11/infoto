@@ -1,4 +1,4 @@
-import json
+import config
 import sys
 
 from os import path
@@ -20,6 +20,8 @@ def get_field(exif, field):
             return v
 
 def shutter_speed_format(field_value):
+    if field_value.numerator > 1:
+        return "{}".format(field_value.numerator)
     return "{}/{}".format(field_value.numerator, field_value.denominator)
 
 def handle_format(name, field_value, fixes):
@@ -73,23 +75,14 @@ def export_info_image(image_file, info):
         exit()
     image = Image.open(image_file)
     exifdata = image.getexif()
-    infostr = parse_exif_data(exifdata, info["metadata"])
-    img_with_border = create_img_with_border(image, info["background"])
-    add_text(img_with_border, infostr, info["font"])
+    infostr = parse_exif_data(exifdata, info.get_metadata())
+    img_with_border = create_img_with_border(image, info.get_background())
+    add_text(img_with_border, infostr, info.get_font())
     save_file(image_file, img_with_border)
-
-
-def read_info_file(file_name):
-    if not (path.exists(file_name) and path.isfile(file_name)):
-        print("could not find the given info file")
-        exit()
-    with open(file_name) as f:
-        data = json.load(f)
-    return data
 
 if __name__ == "__main__":
     if len(sys.argv) <= 2:
         print("A JPEG image file and info.json file are required as arguments.")
         exit()
-    info = read_info_file(sys.argv[2])
-    export_info_image(sys.argv[1], info)
+    config_info = config.create_handler(sys.argv[2])
+    export_info_image(sys.argv[1], config_info)
