@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "Model": {
+            "prefix": "",
+            "postfix": "",
+            "order": 0
+        },
+        "FocalLength": {
+            "prefix": "",
+            "postfix": "MM",
+            "order": 1
+        },
+        "FNumber": {
+            "prefix": "F",
+            "postfix": "",
+            "order": 2
+        },
+        "ExposureTime": {
+            "prefix": "",
+            "postfix": " SEC",
+            "order": 3
+        },
+        "ISOSpeedRatings": {
+            "prefix": "ISO ",
+            "postfix": "",
+            "order": 4
+        }
+    },
+    "font": {
+        "point": 30,
+        "ttf_file": "fonts/MonospaceTypewriter.ttf",
+        "color": "black"
+    },
+    "background": {
+        "color": "white"
+    }
+}
