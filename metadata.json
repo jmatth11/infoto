@@ -27,7 +27,7 @@
         }
     },
     "font": {
-        "point": 30,
+        "point": 70,
         "ttf_file": "fonts/MonospaceTypewriter.ttf",
         "color": "black"
     },
