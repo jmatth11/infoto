@@ -8,7 +8,7 @@ script requires 2 arguments.
 $ ./main.py <image-file> <info.json>
 ```
 
-A `metadata.json` file has been included to show an example of the required input for the `input.json` argument.
+A `metadata.json` file has been included to show an example of the required input for the `info.json` argument.
 Currently only support JPEG images.
 
 
