@@ -1,5 +1,15 @@
 # infoto
-A script to automate generating a JPEG photo with a border and the specified metadata in text on the image
+A script to automate generating a JPEG photo with a border and the specified metadata in text on the image.
+
+__This project is still a work in progress__
+
+Example:
+
+Original Image
+![](references/DSC_1331.jpg)
+
+After ran through script
+![](references/DSC_1331-edited.jpg)
 
 ## Contents
 
