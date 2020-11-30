@@ -30,10 +30,11 @@
         "point": 50,
         "ttf_file": "fonts/MonospaceTypewriter.ttf",
         "color": "black",
-        "y_offset_pct": 0.1
+        "y_offset_pct": 0.04
     },
     "background": {
-        "color": "white"
+        "color": "white",
+        "pixels": 100
     },
     "image": "test_data/DSC_2235.jpg"
 }

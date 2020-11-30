@@ -58,7 +58,7 @@ def create_img_with_border(img, info):
     Returns:
         A new Image object
     """
-    return ImageOps.expand(img, border=300, fill=info["color"])
+    return ImageOps.expand(img, border=info["pixels"], fill=info["color"])
 
 def get_color(color):
     """

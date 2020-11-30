@@ -35,7 +35,8 @@ def format_shutter_speed(rat):
         Formatted string
     """
     # TODO handle point values for 1.3, 1.5, 2.5
-    # TODO handle BULB and TIME values
+    if not isinstance(rat, IFDRational):
+        return val
     if rat.denominator == 1:
         return "{}".format(rat.numerator)
     return "{}/{}".format(rat.numerator, rat.denominator)
@@ -50,6 +51,8 @@ def format_IFDRationals(rat):
     Returns:
         Formatted string
     """
+    if not isinstance(rat, IFDRational):
+        return val
     # IFDRational allows for 0 denominator so check for it
     if rat.denominator == 0:
         return rat.numerator
@@ -58,6 +61,7 @@ def format_IFDRationals(rat):
     if val.is_integer():
         return int(val)
     return val
+    
 
 def handle_format(name, val, fixes):
     """
@@ -73,11 +77,11 @@ def handle_format(name, val, fixes):
     """
     # handle exposure time as a special case 
     if name == "ExposureTime":
-        return "{}{}{}".format(fixes["prefix"], format_shutter_speed(val), fixes["postfix"])
-    else:
-        if isinstance(val, IFDRational):
-            val = format_IFDRationals(val)
-        return "{}{}{}".format(fixes["prefix"], val, fixes["postfix"])
+        val = format_shutter_speed(val)
+    elif isinstance(val, IFDRational):
+        val = format_IFDRationals(val)
+    
+    return "{}{}{}".format(fixes["prefix"], val, fixes["postfix"])
 
 
 def parse_exif_data(exif, info):
