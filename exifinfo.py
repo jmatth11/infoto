@@ -36,7 +36,7 @@ def format_shutter_speed(rat):
     """
     # TODO handle point values for 1.3, 1.5, 2.5
     if not isinstance(rat, IFDRational):
-        return val
+        return rat
     if rat.denominator == 1:
         return "{}".format(rat.numerator)
     return "{}/{}".format(rat.numerator, rat.denominator)
@@ -52,7 +52,7 @@ def format_IFDRationals(rat):
         Formatted string
     """
     if not isinstance(rat, IFDRational):
-        return val
+        return rat
     # IFDRational allows for 0 denominator so check for it
     if rat.denominator == 0:
         return rat.numerator
